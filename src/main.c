@@ -7,6 +7,8 @@ functions, then the main loop.
 */
 #include "fargo3d.h"
 
+extern void UserDef(void);
+
 int   begin_i = 0, NbRestart = 0;
 int   InnerOutputCounter=0, StillWriteOneOutput;
 real dt;
@@ -355,9 +357,11 @@ if (*SPACING=='N'){
 
     if (i==NTOT)
       break;
-    
+
+    UserDef(); // Update planet masses (or other user-defined state) once per DT step
+
     dtemp = 0.0;
-    
+
     while (dtemp<DT) { // DT LOOP
       
       /// AT THIS STAGE Vx IS THE INITIAL TOTAL VELOCITY IN X
