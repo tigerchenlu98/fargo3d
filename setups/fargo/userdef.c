@@ -2,11 +2,21 @@
 
 void UserDef() {
 
+  static int initialized = 0;
+  static double final_mass[10];
+
   double tgrow = 20.0 * 2.0 * M_PI;  // 20 orbits at r=1, in code time units
-  double final_mass = FINALMASS;    // set via FinalMass in the .par file
-  double f_min = 0.05;              // start at 5% of final mass
+  double f_min = 0.05;                // start at 5% of final mass
 
   double t = PhysicalTime;
+
+  // Capture final masses from planets.cfg on the first call (before any tapering)
+  if (!initialized) {
+    for (int i = 0; i < Sys->nb; i++) {
+      final_mass[i] = Sys->mass[i];
+    }
+    initialized = 1;
+  }
 
   double f;
 
@@ -19,6 +29,6 @@ void UserDef() {
   }
 
   for (int i = 0; i < Sys->nb; i++) {
-    Sys->mass[i] = final_mass * f;
+    Sys->mass[i] = final_mass[i] * f;
   }
 }
