@@ -8,6 +8,9 @@ void UserDef() {
   double tgrow = 20.0 * 2.0 * M_PI;  // 20 orbits at r=1, in code time units
   double f_min = 0.05;                // start at 5% of final mass
 
+  // If FinalMass == 0 in the par file, skip tapering entirely (e.g. Pierens runs)
+  int no_taper = (FINALMASS == 0.0);
+
   double t = PhysicalTime;
 
   // Capture final masses from planets.cfg on the first call (before any tapering)
@@ -20,7 +23,9 @@ void UserDef() {
 
   double f;
 
-  if (t < tgrow) {
+  if (no_taper) {
+    f = 1.0;
+  } else if (t < tgrow) {
     f = sin(0.5*M_PI*t/tgrow);
     f = f*f;
     f = f_min + (1.0 - f_min) * f;
