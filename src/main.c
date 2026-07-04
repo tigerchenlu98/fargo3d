@@ -421,8 +421,8 @@ if (*SPACING=='N'){
       MULTIFLUID(Transport(dt));
 
 #ifdef PHOTOEVAP
-      //if (PhysicalTime >= PHOTOEVAPTIME)
-      //  FARGO_SAFE(PhotoEvaporation(dt));
+      if (PhysicalTime >= PHOTOEVAPTIME)
+        FARGO_SAFE(PhotoEvaporation(dt));
 #endif
 
       PhysicalTime+=dt;
