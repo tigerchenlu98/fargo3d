@@ -42,6 +42,8 @@ OmegaFrame                 0.0
 IndirectTerm               no
 ExcludeHill                no
 MassTaper                  0.0
+PhotoEvapTime              1.0e30
+PhotoEvapTau               1.0
 Noise                      0.0
 VerticalDamping            0.0
 Spacing                    Lin

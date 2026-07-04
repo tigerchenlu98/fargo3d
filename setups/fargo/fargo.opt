@@ -36,6 +36,12 @@ FARGO_OPT += -DPOTENTIAL
 
 FARGO_OPT += -DALPHAVISCOSITY
 
+# Density Floor
+FARGO_OPT += -DFLOOR
+
+# Photoevaporation (exponential disk decay after PHOTOEVAPTIME)
+FARGO_OPT += -DPHOTOEVAP
+
 #Cuda blocks
 ifeq (${GPU}, 1)
 FARGO_OPT += -DBLOCK_X=16
