@@ -7,6 +7,8 @@ functions, then the main loop.
 */
 #include "fargo3d.h"
 
+extern void PhotoEvaporation_cpu(real dt);
+
 int   begin_i = 0, NbRestart = 0;
 int   InnerOutputCounter=0, StillWriteOneOutput;
 real dt;
@@ -422,7 +424,7 @@ if (*SPACING=='N'){
 
 #ifdef PHOTOEVAP
       if (PhysicalTime >= PHOTOEVAPTIME)
-        FARGO_SAFE(PhotoEvaporation(dt));
+        FARGO_SAFE(PhotoEvaporation_cpu(dt));
 #endif
 
       PhysicalTime+=dt;
