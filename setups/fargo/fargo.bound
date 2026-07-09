@@ -2,8 +2,8 @@
 #----------------------------------------------
 
 Density:
-	Ymin: EXTRAPOLATE_LEFT
-	Ymax: EXTRAPOLATE_RIGHT
+	Ymin: SYMMETRIC
+	Ymax: SYMMETRIC
 
 Vx:
 	Ymin: KEPLERIAN2DVAZIM
