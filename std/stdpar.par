@@ -58,7 +58,7 @@ HallEffectCoeff            0.0
 AmbipolarDiffusionCoeff    0.0
 Resonance                  0.5
 DampingZone                1.15
-TauDamp                    0.3
+TauDamp                    0.03
 KillingBCColatitude       -0.2
 Beta                       0.0
 CFL                        0.44
