@@ -30,7 +30,8 @@ void Init() {
       r = Ymed(j);
       omega = sqrt(G*MSTAR/r/r/r);
       
-      rho[l] = SIGMA0*pow(r/R0,-SIGMASLOPE)*(1.0+NOISE*(drand48()-.5));
+      real r_taper = 0.85 * YMAX;
+      rho[l] = SIGMA0*pow(r/R0,-SIGMASLOPE)*exp(-pow(r/r_taper,2))*(1.0+NOISE*(drand48()-.5));
       soundspeed  = ASPECTRATIO*pow(r/R0,FLARINGINDEX)*omega*r;
 
 #ifdef ISOTHERMAL
@@ -39,9 +40,10 @@ void Init() {
 #ifdef ADIABATIC
       e[l] = pow(soundspeed,2)*rho[l]/(GAMMA-1.0);
 #endif
-      
+
+      real taper_slope = 2.0*pow(r/r_taper,2);
       vphi[l] = omega*r*sqrt(1.0+pow(ASPECTRATIO,2)*pow(r/R0,2*FLARINGINDEX)*
-			     (2.0*FLARINGINDEX - 1.0 - SIGMASLOPE));
+			     (2.0*FLARINGINDEX - 1.0 - SIGMASLOPE - taper_slope));
       vphi[l] -= OMEGAFRAME*r;
       vphi[l] *= (1.+ASPECTRATIO*NOISE*(drand48()-.5));
       
