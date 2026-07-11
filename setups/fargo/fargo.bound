@@ -3,7 +3,7 @@
 
 Density:
 	Ymin: SYMMETRIC
-	Ymax: SYMMETRIC
+	Ymax: KEPLERIAN2DDENS
 
 Vx:
 	Ymin: KEPLERIAN2DVAZIM
