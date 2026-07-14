@@ -133,9 +133,6 @@ void StockholmBoundary_cpu(real dt) {
 	if(ymed(j) > Y_sup) {
 	  rampy   = (ymed(j)-Y_sup)/(y_max-Y_sup);
 	}
-	if(ymed(j) < Y_inf) {
-	  rampy   = (Y_inf-ymed(j))/(Y_inf-y_min);
-	}
 	rampy *= rampy;		/* Parabolic ramp as in De Val Borro et al (2006) */
 #endif
 #ifdef Z
