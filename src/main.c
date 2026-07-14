@@ -456,12 +456,14 @@ if (*SPACING=='N'){
     
     if(CPU_Master) printf("%s", "\n");
     
-    MULTIFLUID(MonitorGlobal (MONITOR2D      |	\
-			      MONITORY       |	\
-			      MONITORY_RAW   |	\
-			      MONITORSCALAR  |	\
-			      MONITORZ       |	\
-			      MONITORZ_RAW));
+    if (i % 100 == 0) {
+      MULTIFLUID(MonitorGlobal (MONITOR2D      |	\
+			        MONITORY       |	\
+			        MONITORY_RAW   |	\
+			        MONITORSCALAR  |	\
+			        MONITORZ       |	\
+			        MONITORZ_RAW));
+    }
 
     if (ThereArePlanets) {
       WritePlanetSystemFile(TimeStep, YES);
